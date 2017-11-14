@@ -1,0 +1,12 @@
+html
+	head
+		title Contact Page
+
+	body
+		style
+			include pug.css
+		include nav.pug
+		p This is your shopping list:
+		- for (var i = 0; i < shopBasket.length; i++) //shopBasket is the key, 
+			li #{shopBasket[i]}
+		include footer.pug
