@@ -1,0 +1,55 @@
+title {
+	font-size: 48px;
+	color; #C10B0B
+}
+body {
+	font-family: Arial;
+	font-weight: 600; 
+}
+#lower {
+	font-family: Arial; 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    background-color: #D3D3D3
+}
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #D3D3D3;
+}
+nav a {
+    list-style-type: none;
+    color: #0707BB
+}
+.nav {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+    height: 30px;
+    background-color: #C5C2C2
+}
+li.nav { /*horizontal navbar must be done to the list items!!*/
+    float: left;
+    width: 150px;
+}
+a {
+	list-style-type: none;
+    color: #0707BB;
+}
+a:hover {
+    background-color: #08708F;
+}
+a.active {
+    background-color: #fff;
+    color: #444;
+}
+form {
+    padding: 10px;
+    margin: 0;
+}

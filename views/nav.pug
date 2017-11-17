@@ -1,0 +1,18 @@
+nav
+	ul
+		if isLoggedIn
+			li.nav
+				a(href="logout") Logout
+			li.nav
+				a(href="contact") Contact	
+		else 
+			li.nav
+				a(href="login") Log in
+			li.nav
+				a(href="Sign Up") Sign Up!
+		li.nav
+			a(href="contact") Contacts
+		li.nav
+			a(href="/") Prices
+		li.nav
+			a(href="contact") Maps
