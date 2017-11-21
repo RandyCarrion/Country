@@ -1,0 +1,12 @@
+html
+	head
+		title Search Bar
+		style
+			include pug.css
+		body
+			include nav.pug
+			ul
+				- for (var i =0; i < match.length; i++)
+					li Name: #{match[i].firstname}
+					li Last name: #{match[i].lastname}
+					li Email: #{match[i].email}

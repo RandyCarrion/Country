@@ -22,6 +22,8 @@ nav {
     padding: 0;
     text-align: center;
     background-color: #D3D3D3;
+    width: 100%;
+    height: 50px;
 }
 nav a {
     list-style-type: none;

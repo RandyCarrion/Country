@@ -4,12 +4,7 @@ html
 		style
 			include pug.css
 		body
-			h1 Hey, Thanks for joining: 
-			form(class="forms" method="POST" action="/")
-				input(type="text" placeholder="First name" name="firstname")
-				input(type="text" placeholder="Last name" name="lastname")
-				input(type="text" placeholder="Email" name="email")
-				input(type="submit" value="search" redirect="/")
-			p #{user}
-			p #{last}
-			p #{email}
+			h1 Hey, Thanks for joining
+			form(class="forms" method="POST" action="/search")
+				input(type="text" placeholder="search" name="search1")
+				input(type="submit" value="search")
