@@ -3,8 +3,33 @@ html
 		title Search
 		style
 			include pug.css
-		body
-			h1 Hey, Thanks for joining
-			form(class="forms" method="POST" action="/search")
-				input(type="text" placeholder="search" name="search1")
-				input(type="submit" value="search")
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+  				integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+ 				crossorigin="anonymous")
+	body
+		h1 Hey, Thanks for joining
+		form(class="forms" id="formId" method="POST" action="/search")
+			input(id="name" type="text" placeholder="search" name="search1")
+			input(type="submit" value="search")
+		
+			h4 Suggestions:
+			ul(id="suggField") 
+
+
+		script.
+			$(document).ready(function() {//this is where AJAX commands start
+				$("#formId").keyup(function(){ //this starts giving the suggestions to the input in form
+					var input =$(this)/*relates to the previous Jquery syntax in this case formId*/.find("#name").val() //'this' searches the input value within the users.json file 
+					console.log(input)
+						if (input.length > 0) {
+							$.post('/suggestions', {input:input}, function (data, err) {
+								 $('.sugg').remove()
+								 for (var i=0; i < data.match.length; i++){
+								 	$("#suggField").append("<li class='sugg'>" + data.match[i].firstname + ", " + data.match[i].lastname + ", " + data.match[i].email + "</li>")
+								 	}
+							})
+						}	else {
+							$( "#suggField" ).empty();
+						}
+			})
+			})

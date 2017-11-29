@@ -27,7 +27,7 @@ app.post("/signup", (req,res)=> {
             if (err) {
                 throw err;
             }
-            console.log("reached")
+            console.log(req.body)
             res.redirect('/')
         })
     })
@@ -41,51 +41,51 @@ app.get("/signup", (req, res) => {
         res.render('signup', { read: read })
     })
 })
-
-// function validateForm() {
-//     var x = document.forms["firstname"]["lastname"].value;
-//     if (x == "") {
-//         alert("Name must be filled out");
-//         return false;
-//     }
-// }
-app.get("/search", function(req, res){ ///page is thre page URL and 'page' is the route 
-    res.render('search')
-})
-
-app.post("/search", function(req, res) {
+app.post("/suggestions", (req, res) => {
+    var input = req.body.input
+    console.log(input)
     fs.readFile('./users.json', 'utf8', function(err, data) {
         if (err) {
             throw err;
         }
         var read = JSON.parse(data)
-        // console.log(req.body)
         var match = []
+        var reg = new RegExp(input, "i");
         for (var i = 0; i < read.length; i++) {
-            if (req.body.search1 == read[i].firstname || req.body.search1 == read[i].lastname || req.body.search1 == read[i].email) {
-                // console.log(read[i])
+            if (reg.test(read[i].firstname)){
                 match.push(read[i])
             } //this tells it to pull the string in body 'first'
-        }res.render('searchResults', {match:match})
+        }
+        res.json({
+            match: match,
+            status: 200,
+        })
+
     })
 })
 
-// app.post("/searchResults", function(req, res) {
-//     fs.readFile('./users.json', 'utf8', function(err, data) {
-//         if (err) {
-//             throw err;
-//         }
-//         res.render('searchResults')
-//     })
-// })x  
-// app.get("/contact", (req, res) => {
-//     res.render('Contact', {
-//         isLoggedIn: true,
-//         read.firstname, //-shopBasket is the key, List is the value
-//     })
-// })
+app.get("/search", (req, res) =>{ ///page is thre page URL and 'page' is the route 
+    res.render('search')
+})
+
+app.post("/search", (req, res) => {
+    fs.readFile('./users.json', 'utf8', function(err, data) {
+            if (err) {
+                throw err;
+            }
+            var read = JSON.parse(data)
+            // console.log(req.body)
+            var match = []
+            for (var i = 0; i < read.length; i++) {
+                if (req.body.search1 == read[i].firstname || req.body.search1 == read[i].lastname || req.body.search1 == read[i].email) {
+                    // console.log(read[i])
+                    match.push(read[i])
+            }
+        }
+    })
+})
 
 
-app.listen(3001, () => {
+app.listen(3002, () => {
     console.log("Yes Honey?")
 })
